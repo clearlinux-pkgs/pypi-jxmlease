@@ -4,12 +4,13 @@
 #
 Name     : pypi-jxmlease
 Version  : 1.0.3
-Release  : 2
+Release  : 3
 URL      : https://files.pythonhosted.org/packages/8d/6a/b2944628e019c753894552c1499bf60e2cef9efea138756c5d66f0d5eb98/jxmlease-1.0.3.tar.gz
 Source0  : https://files.pythonhosted.org/packages/8d/6a/b2944628e019c753894552c1499bf60e2cef9efea138756c5d66f0d5eb98/jxmlease-1.0.3.tar.gz
 Summary  : jxmlease converts between XML and intelligent Python data structures.
 Group    : Development/Tools
 License  : MIT
+Requires: pypi-jxmlease-license = %{version}-%{release}
 Requires: pypi-jxmlease-python = %{version}-%{release}
 Requires: pypi-jxmlease-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
@@ -20,6 +21,14 @@ jxmlease
 Welcome to jxmlease: a Python module for converting XML to
 intelligent Python data structures, and converting Python data
 structures to XML.
+
+%package license
+Summary: license components for the pypi-jxmlease package.
+Group: Default
+
+%description license
+license components for the pypi-jxmlease package.
+
 
 %package python
 Summary: python components for the pypi-jxmlease package.
@@ -49,7 +58,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1639063183
+export SOURCE_DATE_EPOCH=1649776627
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -69,6 +78,8 @@ PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python set
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/pypi-jxmlease
+cp %{_builddir}/jxmlease-1.0.3/LICENSE %{buildroot}/usr/share/package-licenses/pypi-jxmlease/ab0ac8ffb1233c8a2311dbfdae920b69f7d4f497
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -76,6 +87,10 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/pypi-jxmlease/ab0ac8ffb1233c8a2311dbfdae920b69f7d4f497
 
 %files python
 %defattr(-,root,root,-)
