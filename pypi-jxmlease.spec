@@ -4,7 +4,7 @@
 #
 Name     : pypi-jxmlease
 Version  : 1.0.3
-Release  : 8
+Release  : 9
 URL      : https://files.pythonhosted.org/packages/8d/6a/b2944628e019c753894552c1499bf60e2cef9efea138756c5d66f0d5eb98/jxmlease-1.0.3.tar.gz
 Source0  : https://files.pythonhosted.org/packages/8d/6a/b2944628e019c753894552c1499bf60e2cef9efea138756c5d66f0d5eb98/jxmlease-1.0.3.tar.gz
 Summary  : jxmlease converts between XML and intelligent Python data structures.
